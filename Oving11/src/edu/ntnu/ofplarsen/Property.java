@@ -70,10 +70,20 @@ public class Property {
         this.area = area;
     }
 
+    /**
+     * A property should be able to change its name
+     * Method to set new property name
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * A property should be able to expand its area
+     * Method to set new property area
+     * @param area
+     */
     public void setArea(double area) {
         if(area <= 0){
             throw new IllegalArgumentException("Area must be a positive number");
@@ -81,11 +91,20 @@ public class Property {
         this.area = area;
     }
 
+    /**
+     * It should be able to transfer ownership of the property
+     * Method to set new owners name
+     * @param ownerName
+     */
     public void setOwnerName(String ownerName) {
         if(ownerName.isBlank()){
             throw new IllegalArgumentException("Owner name can't be blank");
         }
         this.ownerName = ownerName;
+    }
+
+    public String getUniqueId(){
+        return this.municipalityNumber + "-" + this.lotNumber + "/" + this.sectionNumber;
     }
 
     public int getMunicipalityNumber() {
@@ -114,5 +133,33 @@ public class Property {
 
     public String getOwnerName() {
         return ownerName;
+    }
+
+    @Override
+    public String toString() {
+        return "municipalityNumber=" + municipalityNumber +
+                ", municipalityName='" + municipalityName + '\'' +
+                ", lotNumber=" + lotNumber +
+                ", sectionNumber=" + sectionNumber +
+                ", name='" + name + '\'' +
+                ", area=" + area +
+                ", ownerName='" + ownerName + '\'';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Property)) return false;
+
+        Property property = (Property) o;
+        return this.getUniqueId().equals(property.getUniqueId());
+    }
+
+    @Override
+    public int hashCode() {
+        int result = municipalityNumber;
+        result = 31 * result + lotNumber;
+        result = 31 * result + sectionNumber;
+        return result;
     }
 }
