@@ -43,7 +43,7 @@ public class Property {
         this.ownerName = ownerName.trim();
     }
 
-    public Property(int municipalityNumber, String municipalityName, int lotNumber, int sectionNumber, String ownerName, double area) {
+    public Property(int municipalityNumber, String municipalityName, int lotNumber, int sectionNumber, double area, String ownerName) {
         if (municipalityNumber < 101 || municipalityNumber > 5054){
             throw new IllegalArgumentException("Municipality number must be between 101 and 5054");
         }
@@ -68,6 +68,17 @@ public class Property {
         this.sectionNumber = sectionNumber;
         this.ownerName = ownerName;
         this.area = area;
+        this.name = "";
+    }
+
+    public Property(Property property) {
+        this.municipalityNumber = property.getMunicipalityNumber();
+        this.municipalityName = property.getMunicipalityName();
+        this.lotNumber = property.getLotNumber();
+        this.sectionNumber = property.getSectionNumber();
+        this.ownerName = property.getOwnerName();
+        this.name = property.getName();
+        this.area = property.getArea();
     }
 
     /**
