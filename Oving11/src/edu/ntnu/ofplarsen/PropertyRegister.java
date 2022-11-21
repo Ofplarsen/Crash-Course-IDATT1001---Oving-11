@@ -24,7 +24,7 @@ public class PropertyRegister {
 
         //Hva er feil her? Må huske å dypkopiere!!!
         //(Vis hvordan, og kopikonstruktør)
-        return newProperty;
+        return new Property(newProperty);
         //return new Property(newProperty);
     }
 
@@ -36,7 +36,7 @@ public class PropertyRegister {
         }
         properties.add(newProperty);
         //Hva er feil her? Må huske å dypkopiere!!!
-        return newProperty;
+        return new Property(newProperty);
         //return new Property(newProperty);
     }
 
